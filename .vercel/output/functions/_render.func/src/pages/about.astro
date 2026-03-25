@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+import ContactCTA from '../components/ContactCTA.astro';
+import Hero from '../components/Hero.astro';
+---
+
+<BaseLayout title="About | Tuan Ngo" description="About Me">
+	<div class="stack gap-20">
+		<main class="wrapper about">
+			<Hero
+				title="About"
+				tagline="Thanks for stopping by. Read below to learn more about myself and my background."
+			>
+				<img
+					width="1553"
+					height="873"
+					src="/assets/images/hero-about.png"
+					alt="Tuan Ngo"
+				/>
+			</Hero>
+
+			<section>
+				<h2 class="section-title">Background</h2>
+				<div class="content">
+					<p>
+						I am <strong>Ngo Van Tuan</strong>, a Computer Science student with a strong interest in web development and blockchain technology. 
+						I have experience building web applications and working with backend systems, APIs, and databases. 
+						I am also familiar with Git for version control and have participated in several technical projects and hackathons.
+					</p>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Education</h2>
+				<div class="content">
+					<div class="education-item">
+						<h3>University of Transport and Communications</h3>
+						<p>Bachelor of Information Technology – Computer Science (2023 – 2027)</p>
+						<p class="gpa">GPA: <strong>3.49 / 4.0</strong></p>
+					</div>
+				</div>
+			</section>
+			<section>
+				<h2 class="section-title">Skills</h2>
+				<div class="content">
+					<ul class="skills-list">
+						<li>JavaScript (ES6+)</li>
+						<li>TypeScript</li>
+						<li>React.js</li>
+						<li>Next.js</li>
+						<li>Node.js</li>
+						<li>Backend API</li>
+						<li>Python</li>
+						<li>C/C++</li>
+						<li>SQL Server</li>
+						<li>Git / GitHub</li>
+						<li>Docker</li>
+						<li>Blockchain</li>
+						<li>Solidity</li>
+					</ul>
+				</div>
+			</section>
+		</main>
+
+		<ContactCTA />
+	</div>
+</BaseLayout>
+
+<style>
+	.about {
+		display: flex;
+		flex-direction: column;
+		gap: 3.5rem;
+	}
+
+	img {
+		margin-top: 1.5rem;
+		border-radius: 1.5rem;
+		box-shadow: var(--shadow-md);
+	}
+
+	section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+		color: var(--gray-200);
+	}
+
+	.section-title {
+		grid-column-start: 1;
+		font-size: var(--text-xl);
+		color: var(--gray-0);
+	}
+
+	.content {
+		grid-column: 2 / 4;
+	}
+
+	.content :global(a) {
+		text-decoration: 1px solid underline transparent;
+		text-underline-offset: 0.25em;
+		transition: text-decoration-color var(--theme-transition);
+	}
+
+	.content :global(a:hover),
+	.content :global(a:focus) {
+		text-decoration-color: currentColor;
+	}
+
+	.education-item h3 {
+		font-size: var(--text-2xl);
+		color: var(--gray-0);
+		margin-bottom: 0.5rem;
+	}
+
+	.gpa {
+		color: var(--accent-regular);
+		margin-top: 0.5rem;
+	}
+
+	.skills-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.75rem;
+		list-style: none;
+		padding: 0;
+	}
+
+	.skills-list li {
+		background: var(--gradient-subtle);
+		border: 1px solid var(--gray-800);
+		padding: 0.5rem 1rem;
+		border-radius: 999rem;
+		font-size: var(--text-sm);
+		color: var(--gray-300);
+		transition: all 0.3s ease;
+	}
+
+	.skills-list li:hover {
+		border-color: var(--accent-regular);
+		color: var(--gray-0);
+		transform: translateY(-2px);
+	}
+
+	@media (min-width: 50em) {
+		.about {
+			display: grid;
+			grid-template-columns: 1fr 60% 1fr;
+		}
+
+		.about > :global(:first-child) {
+			grid-column-start: 2;
+		}
+
+		section {
+			display: contents;
+			font-size: var(--text-lg);
+		}
+	}
+</style>
