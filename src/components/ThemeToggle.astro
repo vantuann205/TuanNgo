@@ -78,13 +78,16 @@ import Icon from './Icon.astro';
 			const setTheme = (dark: boolean) => {
 				document.documentElement.classList[dark ? 'add' : 'remove']('theme-dark');
 				button.setAttribute('aria-pressed', String(dark));
+				localStorage.setItem('theme', dark ? 'dark' : 'light');
 			};
 
 			// Toggle the theme when a user clicks the button.
 			button.addEventListener('click', () => setTheme(!this.isDark()));
 
-			// Initialize button state to reflect current theme.
-			setTheme(this.isDark());
+			// Initialize from localStorage, not from current class (which may be stale after View Transition)
+			const stored = localStorage.getItem('theme');
+			const isDark = stored ? stored === 'dark' : true;
+			setTheme(isDark);
 		}
 
 		isDark() {
